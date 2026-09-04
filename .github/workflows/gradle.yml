@@ -37,10 +37,11 @@ jobs:
 
       - name: Run unit tests
         run: ./gradlew :TeamCode:testReleaseUnitTest --no-daemon --stacktrace
-
-      - name: Run JaCoCo
-        run:
-          ./gradlew :TeamCode:jacocoTestReport
+      
+      # Temporaraly removed
+      #- name: Run JaCoCo
+      #  run:
+      #    ./gradlew :TeamCode:jacocoTestReport
 
       - name: Build Release APK
         run: ./gradlew assembleRelease --no-daemon --stacktrace
