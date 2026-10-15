@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.Utils_13233;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
 public class DriveControls {
     private final MotorConstructor motors;
     public DriveControls(HardwareMap hardwareMap) {

@@ -7,29 +7,13 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Utils_13233.DriveControls;
 import org.firstinspires.ftc.teamcode.Utils_13233.MotorConstructor;
+import org.firstinspires.ftc.teamcode.Utils_13233.ScreenControls;
 
 /*
-    Current Controls:
-    Gamepad1:
-        Left  Stick Y: Forward backward movement
-        Left  Stick X: Left right strafe movement
-        Right Stick X: Turn the entier robot left and right
-
-        A:   Move the flipper to push the artifact
-        B:   Set the drive motors to brake
-        X:   Set launch wheels to 0.7 power
-        Left Bumper: Set launch wheels to 1.0 power
-
-    Gamepad2:
-        D-Pad:
-            Left:  Move sorter to launch position 1
-            Up:    Move sorter to launch position 2
-            Right: Move sorter to launch position 3
-
-        X: Move sorter to intake position 1
-        Y: Move sorter to intake position 2
-        B: Move sorter to intake position 3
-
+    Current Gamepad Controls
+        Gamepad1:
+            LeftStick  = forward left right back
+            RightStuck = turn left and right
  */
 
 
@@ -39,6 +23,7 @@ public class TeleOpMain extends LinearOpMode {
     // Constructors for the utils classes
     private DriveControls drive;
     private MotorConstructor motors;
+    private ScreenControls screen;
 
 
     //This function is executed when this Op Mode is selected from the Driver Station
@@ -47,6 +32,9 @@ public class TeleOpMain extends LinearOpMode {
         // Create the utils classes
         drive = new DriveControls(hardwareMap);
         motors = new MotorConstructor(hardwareMap);
+
+        // init the telemetry screen
+        screen.initScreen();
 
         // Wait for the game to start (driver presses PLAY)
         // The waitForStart() function will wait for the start button to begin
@@ -59,7 +47,14 @@ public class TeleOpMain extends LinearOpMode {
             telemetry.addData("Status", "opModeIsActive");
             telemetry.addLine();
             telemetry.addData("Sorter ", "Stats");
+            // Print the telemetry to the screen
+            // TODO: Actually give this live information
+            screen.printCurrentPollen(ScreenControls.ballType.POLLEN,
+                    ScreenControls.ballType.NECTAR_RED, ScreenControls.ballType.NECTAR_BlUE,
+                    ScreenControls.ballType.EMPTY);
             telemetry.update();
+
+
             sleep(50);
 
             //Add option to enable brakes when sharbell holds a
