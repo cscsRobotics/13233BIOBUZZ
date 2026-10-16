@@ -30,11 +30,11 @@ public class DriveControls {
         float rotate = controlRightStick;
         float speed = Math.max(1.0f - speedLimiter, 0.5f);
 
-        if (forward != 0 || rotate != 0){
+        if (isJoystickInUse(controlLeftStickX, controlLeftStickY, controlRightStick)){
             setDriveFloat();
         }
         else{
-            setDriveFloat();
+            setDriveBrake();
         }
 
         // Calculate the power for each motor
@@ -48,6 +48,30 @@ public class DriveControls {
         motors.leftFront.setPower(frontLeftPower);
         motors.rightBack.setPower(backRightPower);
         motors.leftBack.setPower(backLeftPower);
+    }
+
+    /**
+     * Checks if one of three joysticks is above the deadzone threshold
+     *
+     * @return if one of the joysticks is above the threshold is returns true else false
+     */
+    boolean isJoystickInUse(float leftStickX, float leftStickY,
+                            float rightStickX){
+        // check if one of the joysticks is in use
+        return isJoystickInDeadZone(leftStickX) || isJoystickInDeadZone(leftStickY)
+                || isJoystickInDeadZone(rightStickX);
+    }
+
+    /**
+     * Checks if one a joystick is above the deadzone threshold
+     *
+     * @return if one of the joysticks is above the threshold is returns true else false
+     */
+    boolean isJoystickInDeadZone(float stickAxis){
+        double joystickDeadzone = 0.1;
+
+        // check to see if the joystick is in use
+        return stickAxis >= joystickDeadzone || stickAxis <= -joystickDeadzone;
     }
 
     /**
