@@ -30,12 +30,18 @@ public class DriveControls {
         float rotate = controlRightStick;
         float speed = Math.max(1.0f - speedLimiter, 0.5f);
 
+        if (forward != 0 || rotate != 0){
+            setDriveFloat();
+        }
+        else{
+            setDriveFloat();
+        }
 
         // Calculate the power for each motor
-        float frontRightPower = (forward + strafe + rotate) * (speed);
-        float frontLeftPower = (forward - strafe - rotate) * (speed);
-        float backRightPower = (forward - strafe + rotate) * (speed);
-        float backLeftPower = (forward + strafe - rotate) * (speed);
+        float frontRightPower = (forward - strafe + rotate) * (speed);
+        float frontLeftPower = (forward + strafe - rotate) * (speed);
+        float backRightPower = (forward + strafe + rotate) * (speed);
+        float backLeftPower = (forward - strafe - rotate) * (speed);
 
         // Set the power for each of the motors
         motors.rightFront.setPower(frontRightPower);

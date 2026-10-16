@@ -20,6 +20,8 @@ public class MotorConstructor {
     public DcMotor leftBack;
     public DcMotor rightBack;
 
+    //Intake Motor
+    public DcMotor intake;
 
     public MotorConstructor(HardwareMap hardwareMap) {
         // Map main Drive Motors
@@ -34,5 +36,7 @@ public class MotorConstructor {
         leftBack.setDirection(DcMotorSimple.Direction.FORWARD);
         rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        // Intake
+        intake = hardwareMap.get(DcMotor.class, "intake");
     }
 }

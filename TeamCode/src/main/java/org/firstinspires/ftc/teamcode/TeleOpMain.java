@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Utils_13233.DriveControls;
+import org.firstinspires.ftc.teamcode.Utils_13233.IntakeControl;
 import org.firstinspires.ftc.teamcode.Utils_13233.MotorConstructor;
 import org.firstinspires.ftc.teamcode.Utils_13233.ScreenControls;
 
@@ -22,6 +23,7 @@ public class TeleOpMain extends LinearOpMode {
 
     // Constructors for the utils classes
     private DriveControls drive;
+    private IntakeControl intake;
     private MotorConstructor motors;
     private ScreenControls screen;
 
@@ -32,9 +34,10 @@ public class TeleOpMain extends LinearOpMode {
         // Create the utils classes
         drive = new DriveControls(hardwareMap);
         motors = new MotorConstructor(hardwareMap);
+        intake = new IntakeControl(hardwareMap);
 
         // init the telemetry screen
-        screen.initScreen();
+        //screen.initScreen();
 
         // Wait for the game to start (driver presses PLAY)
         // The waitForStart() function will wait for the start button to begin
@@ -46,12 +49,11 @@ public class TeleOpMain extends LinearOpMode {
             // Add status data to driver hub display
             telemetry.addData("Status", "opModeIsActive");
             telemetry.addLine();
-            telemetry.addData("Sorter ", "Stats");
             // Print the telemetry to the screen
             // TODO: Actually give this live information
-            screen.printCurrentPollen(ScreenControls.ballType.POLLEN,
-                    ScreenControls.ballType.NECTAR_RED, ScreenControls.ballType.NECTAR_BlUE,
-                    ScreenControls.ballType.EMPTY);
+//            screen.printCurrentPollen(ScreenControls.ballType.POLLEN,
+//                    ScreenControls.ballType.NECTAR_RED, ScreenControls.ballType.NECTAR_BlUE,
+//                    ScreenControls.ballType.EMPTY);
             telemetry.update();
 
 
@@ -63,6 +65,8 @@ public class TeleOpMain extends LinearOpMode {
             // Sets the power to the drive motors based on current gamepad inputs
             drive.setDrivePower(gamepad1.left_stick_y, gamepad1.left_stick_x,
                 gamepad1.right_stick_x, gamepad1.left_trigger);
+
+            intake.runIntake(gamepad1.a);
 
             // Slow down the loop because for some reason it goes to fast and causes the motors to
             // not work properly
