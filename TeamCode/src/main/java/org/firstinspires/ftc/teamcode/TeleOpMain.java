@@ -37,6 +37,7 @@ public class TeleOpMain extends LinearOpMode {
         intake = new IntakeControl(hardwareMap);
 
         // init the telemetry screen
+
         //screen.initScreen();
 
         // Wait for the game to start (driver presses PLAY)
@@ -66,6 +67,7 @@ public class TeleOpMain extends LinearOpMode {
             drive.setDrivePower(gamepad1.left_stick_y, gamepad1.left_stick_x,
                 gamepad1.right_stick_x, gamepad1.left_trigger);
 
+            // runs the intake based on these settings
             intake.runIntake(gamepad1.a);
 
             // Slow down the loop because for some reason it goes to fast and causes the motors to
