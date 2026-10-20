@@ -7,8 +7,6 @@ public class ShooterControls {
     int yawTargetPos;
     int yawMin; // modify value
     int yawMax; // modify value
-    int yawDeadzoneMin; // modify value
-    int yawdeadzoneMax;  // modify value
 
     private final MotorConstructor motors;
 
