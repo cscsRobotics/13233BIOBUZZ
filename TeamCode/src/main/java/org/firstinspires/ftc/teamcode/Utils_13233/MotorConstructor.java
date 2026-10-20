@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Utils_13233;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
@@ -24,7 +25,7 @@ public class MotorConstructor {
     public DcMotor intake;
 
     //Shooter
-    public DcMotor flywheel;
+    public DcMotorEx flywheel;
     public DcMotor launchYaw; // yaw is rotation left to right
 
     public MotorConstructor(HardwareMap hardwareMap) {
@@ -44,7 +45,7 @@ public class MotorConstructor {
         intake = hardwareMap.get(DcMotor.class, "intake");
 
         // Launcher
-        flywheel = hardwareMap.get(DcMotor.class, "flywheel");
+        flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
         launchYaw = hardwareMap.get(DcMotor.class, "launchYaw");
     }
 }

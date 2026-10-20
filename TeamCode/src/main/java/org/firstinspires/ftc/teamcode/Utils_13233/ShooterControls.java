@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Utils_13233;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class ShooterControls {
@@ -29,12 +30,17 @@ public class ShooterControls {
     }
 
     public int getMoveAmount(float controllerInput) {
-        return (int) controllerInput; // cast the input from a controller to an int
+        return (int) (controllerInput * 100) / 10; // cast the input from a controller to an int
+    }
+
+    public double getFlyWheelSpeed(DcMotorEx flywheel) {
+        // 20:1 (not exact) gear tick x 28 counts per revolution = 560 counter per revolution
+        // (Flywheel tick per second / 560) = rps * 60 = rpm
+        return (flywheel.getVelocity() / 560) * 60;
     }
 
     public void adjustYaw(int input, DcMotor motor) {
         // resets each time the function is called
-        int motorCurrentPosition = motor.getCurrentPosition();
         yawTargetPos = yawTargetPos + input;
 
         // deal with min and max
