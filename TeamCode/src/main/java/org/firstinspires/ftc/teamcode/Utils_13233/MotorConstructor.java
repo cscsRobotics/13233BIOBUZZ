@@ -23,6 +23,10 @@ public class MotorConstructor {
     //Intake Motor
     public DcMotor intake;
 
+    //Shooter
+    public DcMotor flywheel;
+    public DcMotor launchYaw; // yaw is rotation left to right
+
     public MotorConstructor(HardwareMap hardwareMap) {
         // Map main Drive Motors
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
@@ -38,5 +42,9 @@ public class MotorConstructor {
 
         // Intake
         intake = hardwareMap.get(DcMotor.class, "intake");
+
+        // Launcher
+        flywheel = hardwareMap.get(DcMotor.class, "flywheel");
+        launchYaw = hardwareMap.get(DcMotor.class, "launchYaw");
     }
 }
