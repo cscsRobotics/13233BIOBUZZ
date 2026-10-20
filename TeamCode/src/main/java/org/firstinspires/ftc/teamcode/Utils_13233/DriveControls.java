@@ -2,6 +2,9 @@ package org.firstinspires.ftc.teamcode.Utils_13233;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
+
 public class DriveControls {
     private final MotorConstructor motors;
     public DriveControls(HardwareMap hardwareMap) {
@@ -30,13 +33,6 @@ public class DriveControls {
         float rotate = controlRightStick;
         float speed = Math.max(1.0f - speedLimiter, 0.5f);
 
-        if (isJoystickInUse(controlLeftStickX, controlLeftStickY, controlRightStick)){
-            setDriveFloat();
-        }
-        else{
-            setDriveBrake();
-        }
-
         // Calculate the power for each motor
         float frontRightPower = (forward - strafe + rotate) * (speed);
         float frontLeftPower = (forward + strafe - rotate) * (speed);
@@ -48,6 +44,13 @@ public class DriveControls {
         motors.leftFront.setPower(frontLeftPower);
         motors.rightBack.setPower(backRightPower);
         motors.leftBack.setPower(backLeftPower);
+
+        if (isJoystickInUse(controlLeftStickX, controlLeftStickY, controlRightStick)){
+            setDriveFloat();
+        }
+        else{
+            setDriveBrake();
+        }
     }
 
     /**
