@@ -5,8 +5,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class ShooterControls {
     int yawTargetPos;
-    int yawMin;
-    int yawMax;
+    int yawMin; // modify value
+    int yawMax; // modify value
+    int yawDeadzoneMin; // modify value
+    int yawdeadzoneMax;  // modify value
 
     private final MotorConstructor motors;
 
@@ -35,14 +37,12 @@ public class ShooterControls {
     public void adjustYaw(int input, DcMotor motor) {
         // resets each time the function is called
         int motorCurrentPosition = motor.getCurrentPosition();
-        int newTargetPosition = motorCurrentPosition + input;
+        yawTargetPos = yawTargetPos + input;
 
-        if (newTargetPosition > yawMax) {
-            newTargetPosition = yawMin;
-        } else if (newTargetPosition < yawMin) {
-            newTargetPosition = yawMax;
-        }
+        // deal with min and max
+        if (yawTargetPos > yawMax) yawTargetPos = yawMin;
+        else if (yawTargetPos < yawMin) yawTargetPos = yawMax;
 
-        motor.setTargetPosition(newTargetPosition);
+        motor.setTargetPosition(yawTargetPos);
     }
 }
