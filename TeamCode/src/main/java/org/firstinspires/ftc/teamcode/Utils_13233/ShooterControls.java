@@ -22,10 +22,10 @@ public class ShooterControls {
         motor.setPower(1);
     }
 
-    private void initAllMotors(DcMotor motor1, DcMotor motor2) {
-        initSetToPositionMotor(motor1);
+    public void initAllMotors(DcMotor yawMotor, DcMotor flywheel) {
+        initSetToPositionMotor(yawMotor);
 
-        motor2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        flywheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     public int getMoveAmount(float controllerInput) {

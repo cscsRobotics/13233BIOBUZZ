@@ -9,6 +9,7 @@ import org.firstinspires.ftc.teamcode.Utils_13233.DriveControls;
 import org.firstinspires.ftc.teamcode.Utils_13233.IntakeControl;
 import org.firstinspires.ftc.teamcode.Utils_13233.MotorConstructor;
 import org.firstinspires.ftc.teamcode.Utils_13233.ScreenControls;
+import org.firstinspires.ftc.teamcode.Utils_13233.ShooterControls;
 
 /*
     Current Gamepad Controls
@@ -26,6 +27,7 @@ public class TeleOpMain extends LinearOpMode {
     private IntakeControl intake;
     private MotorConstructor motors;
     private ScreenControls screen;
+    private ShooterControls shooter;
 
 
     //This function is executed when this Op Mode is selected from the Driver Station
@@ -35,6 +37,10 @@ public class TeleOpMain extends LinearOpMode {
         drive = new DriveControls(hardwareMap);
         motors = new MotorConstructor(hardwareMap);
         intake = new IntakeControl(hardwareMap);
+        shooter = new ShooterControls(hardwareMap);
+
+
+        shooter.initAllMotors(motors.launchYaw, motors.flywheel);
 
         // init the telemetry screen
 
@@ -48,31 +54,34 @@ public class TeleOpMain extends LinearOpMode {
         // Run code while op mode is active
         while (opModeIsActive()) {
             // Add status data to driver hub display
-            telemetry.addData("Status", "opModeIsActive");
-            telemetry.addLine();
+//            telemetry.addData("Status", "opModeIsActive");
+//            telemetry.addLine();
             // Print the telemetry to the screen
             // TODO: Actually give this live information
 //            screen.printCurrentPollen(ScreenControls.ballType.POLLEN,
 //                    ScreenControls.ballType.NECTAR_RED, ScreenControls.ballType.NECTAR_BlUE,
 //                    ScreenControls.ballType.EMPTY);
-            telemetry.update();
+//            telemetry.update();
 
 
-            sleep(50);
+            //sleep(50);
 
             //Add option to enable brakes when sharbell holds a
             drive.setDriveMotorZeroPowerBehavior(gamepad1.b);
 
             // Sets the power to the drive motors based on current gamepad inputs
             drive.setDrivePower(gamepad1.left_stick_y, gamepad1.left_stick_x,
-                gamepad1.right_stick_x, gamepad1.left_trigger);
+                    gamepad1.right_stick_x, gamepad1.left_trigger);
 
             // runs the intake based on these settings
             intake.runIntake(gamepad1.a);
 
+            // Shooter
+            shooter.adjustYaw(shooter.getMoveAmount(gamepad2.left_stick_x), motors.launchYaw);
+
             // Slow down the loop because for some reason it goes to fast and causes the motors to
             // not work properly
-            sleep(50);
+            //sleep(50);
         }
         // Do not place any drive code here outside of the while loop (will fail inspection)
     }
