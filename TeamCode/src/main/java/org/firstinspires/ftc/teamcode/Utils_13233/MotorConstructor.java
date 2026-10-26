@@ -24,9 +24,17 @@ public class MotorConstructor {
     //Intake Motor
     public DcMotor intake;
 
+<<<<<<< Updated upstream
     //Shooter
     public DcMotorEx flywheel;
     public DcMotor launchYaw; // yaw is rotation left to right
+=======
+    //Servos
+    public CRServo rightTop;
+    public CRServo leftTop;
+    public CRServo leftBottom;
+    public CRServo rightBottom;
+>>>>>>> Stashed changes
 
     public MotorConstructor(HardwareMap hardwareMap) {
         // Map main Drive Motors
@@ -43,9 +51,18 @@ public class MotorConstructor {
 
         // Intake
         intake = hardwareMap.get(DcMotor.class, "intake");
+<<<<<<< Updated upstream
 
         // Launcher
         flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
         launchYaw = hardwareMap.get(DcMotor.class, "launchYaw");
+=======
+        //Servos
+        rightTop = hardwareMap.get(CRServo.class, "rightTop");
+        leftTop = hardwareMap.get(CRServo.class,"leftTop");
+        rightBottom = hardwareMap.get(CRServo.class, "rightBottom");
+        leftBottom = hardwareMap.get(CRServo.class, "leftBottom");
+
+>>>>>>> Stashed changes
     }
 }
