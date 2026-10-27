@@ -11,9 +11,10 @@ public class ShooterControls {
 
     private void initSetToPositionMotor(DcMotor motor) {
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         motor.setTargetPosition(0);
+        motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
         motor.setPower(1);
     }
 
