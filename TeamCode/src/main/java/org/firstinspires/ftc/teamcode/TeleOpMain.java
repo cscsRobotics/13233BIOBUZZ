@@ -69,11 +69,11 @@ public class TeleOpMain extends LinearOpMode {
             drive.setDriveMotorZeroPowerBehavior(gamepad1.b);
 
             // Sets the power to the drive motors based on current gamepad inputs
-            drive.setDrivePower(gamepad1.left_stick_y, gamepad1.left_stick_x,
+            drive.setPower(gamepad1.left_stick_y, gamepad1.left_stick_x,
                     gamepad1.right_stick_x, gamepad1.left_trigger);
 
             // runs the intake based on these settings
-            intake.runIntake(gamepad1.a);
+            intake.run(gamepad1.a);
 
             // Shooter
             shooter.adjustYaw(shooter.getMoveAmount(gamepad2.left_stick_x), motors.launchYaw);
