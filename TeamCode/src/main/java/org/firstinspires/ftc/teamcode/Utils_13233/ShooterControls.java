@@ -21,17 +21,30 @@ public class ShooterControls {
     public void initAllMotors(DcMotor yawMotor, DcMotor flywheel) {
         initSetToPositionMotor(yawMotor);
 
-        flywheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //flywheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     public int getMoveAmount(float controllerInput) {
         return (int) (controllerInput * 100) / 10; // cast the input from a controller to an int
     }
 
-    public double getFlyWheelSpeed(DcMotorEx flywheel) {
-        // 20:1 (not exact) gear tick x 28 counts per revolution = 560 counter per revolution
-        // (Flywheel tick per second / 560) = rps * 60 = rpm
-        return (flywheel.getVelocity() / 560) * 60;
+//    public double getFlyWheelSpeed(DcMotorEx flywheel) {
+//        // 20:1 (not exact) gear tick x 28 counts per revolution = 560 counter per revolution
+    // The encoder ticks are wrong I used the wrong motor
+//        // (Flywheel tick per second / 560) = rps * 60 = rpm
+//        return (flywheel.getVelocity() / 560) * 60;
+//    }
+
+    public void manualSetPower(DcMotor flywheel, float power) {
+        flywheel.setPower(power);
+    }
+
+    public void manualSetPower(DcMotor flywheel, boolean power) {
+        if (power) {
+            flywheel.setPower(1.0);
+        } else {
+            flywheel.setPower(0.0);
+        }
     }
 
     public void adjustYaw(int input, DcMotor motor) {

@@ -82,6 +82,8 @@ public class TeleOpMain extends LinearOpMode {
             // Shooter
             shooter.adjustYaw(shooter.getMoveAmount(gamepad2.left_stick_x), motors.launchYaw);
 
+            shooter.manualSetPower(motors.flywheel, gamepad1.y);
+
             // Slow down the loop because for some reason it goes to fast and causes the motors to
             // not work properly
             //sleep(50);

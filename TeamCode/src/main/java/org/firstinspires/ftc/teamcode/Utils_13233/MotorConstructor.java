@@ -1,14 +1,15 @@
 package org.firstinspires.ftc.teamcode.Utils_13233;
 
-import com.qualcomm.hardware.limelightvision.Limelight3A;
+//import com.qualcomm.hardware.limelightvision.Limelight3A;
+
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
+//import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.IMU;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.VoltageSensor;
+//import com.qualcomm.robotcore.hardware.IMU;
+//import com.qualcomm.robotcore.hardware.Servo;
+//import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 /**
  * Class holds motors and servos that are used throughout the code
@@ -25,7 +26,8 @@ public class MotorConstructor {
     public DcMotor intake;
 
     //Shooter
-    public DcMotorEx flywheel;
+    //public DcMotorEx flywheel;
+    public DcMotor flywheel;
     public DcMotor launchYaw; // yaw is rotation left to right
 
 
@@ -34,6 +36,7 @@ public class MotorConstructor {
     public CRServo leftTop;
     public CRServo leftBottom;
     public CRServo rightBottom;
+
     public MotorConstructor(HardwareMap hardwareMap) {
         // Map main Drive Motors
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
@@ -51,14 +54,22 @@ public class MotorConstructor {
         intake = hardwareMap.get(DcMotor.class, "intake");
 
         // Launcher
-        flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
+        //flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
+        //flywheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        flywheel = hardwareMap.get(DcMotor.class, "flywheel");
+
         launchYaw = hardwareMap.get(DcMotor.class, "launchYaw");
 
 
         // Transport Servos should all be CR servos in order to let
         rightTop = hardwareMap.get(CRServo.class, "rightTop");
-        leftTop = hardwareMap.get(CRServo.class,"leftTop");
+        rightTop.setDirection(CRServo.Direction.REVERSE);
+
+        leftTop = hardwareMap.get(CRServo.class, "leftTop");
+
         rightBottom = hardwareMap.get(CRServo.class, "rightBottom");
+        rightBottom.setDirection(CRServo.Direction.REVERSE);
+
         leftBottom = hardwareMap.get(CRServo.class, "leftBottom");
 
     }
