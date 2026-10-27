@@ -9,12 +9,6 @@ public class ShooterControls {
     int yawMin; // modify value
     int yawMax; // modify value
 
-    private final MotorConstructor motors;
-
-    public ShooterControls(HardwareMap hardwareMap) {
-        this.motors = new MotorConstructor(hardwareMap);
-    }
-
     private void initSetToPositionMotor(DcMotor motor) {
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);

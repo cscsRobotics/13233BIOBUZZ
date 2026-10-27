@@ -3,13 +3,15 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.Servo;
+
 
 import org.firstinspires.ftc.teamcode.Utils_13233.DriveControls;
 import org.firstinspires.ftc.teamcode.Utils_13233.IntakeControl;
 import org.firstinspires.ftc.teamcode.Utils_13233.MotorConstructor;
-import org.firstinspires.ftc.teamcode.Utils_13233.ScreenControls;
+//import org.firstinspires.ftc.teamcode.Utils_13233.ScreenControls;
 import org.firstinspires.ftc.teamcode.Utils_13233.ShooterControls;
+import org.firstinspires.ftc.teamcode.Utils_13233.TransportControls;
+
 
 /*
     Current Gamepad Controls
@@ -23,23 +25,20 @@ import org.firstinspires.ftc.teamcode.Utils_13233.ShooterControls;
 public class TeleOpMain extends LinearOpMode {
 
     // Constructors for the utils classes
-    private DriveControls drive;
-    private IntakeControl intake;
-    private MotorConstructor motors;
-    private ScreenControls screen;
-    private ShooterControls shooter;
+    //private ScreenControls screen;
 
 
     //This function is executed when this Op Mode is selected from the Driver Station
     @Override
     public void runOpMode() {
         // Create the utils classes
-        drive = new DriveControls(hardwareMap);
-        motors = new MotorConstructor(hardwareMap);
-        intake = new IntakeControl(hardwareMap);
-        shooter = new ShooterControls(hardwareMap);
+        DriveControls drive = new DriveControls(hardwareMap);
+        MotorConstructor motors = new MotorConstructor(hardwareMap);
+        IntakeControl intake = new IntakeControl(hardwareMap);
+        ShooterControls shooter = new ShooterControls();
+        TransportControls transport = new TransportControls();
 
-
+        transport.servoInit(motors.leftTop, motors.leftBottom, motors.rightTop, motors.rightBottom);
         shooter.initAllMotors(motors.launchYaw, motors.flywheel);
 
         // init the telemetry screen
@@ -83,6 +82,6 @@ public class TeleOpMain extends LinearOpMode {
             // not work properly
             //sleep(50);
         }
-        // Do not place any drive code here outside of the while loop (will fail inspection)
+        // Do not place any drive code here outside the while loop (will fail inspection)
     }
 }
