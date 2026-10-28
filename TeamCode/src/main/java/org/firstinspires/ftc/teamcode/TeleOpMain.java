@@ -54,24 +54,18 @@ public class TeleOpMain extends LinearOpMode {
         // Run code while op mode is active
         while (opModeIsActive()) {
             // Add status data to driver hub display
-//            telemetry.addData("Status", "opModeIsActive");
-//            telemetry.addLine();
-            // Print the telemetry to the screen
-            // TODO: Actually give this live information
-//            screen.printCurrentPollen(ScreenControls.ballType.POLLEN,
-//                    ScreenControls.ballType.NECTAR_RED, ScreenControls.ballType.NECTAR_BlUE,
-//                    ScreenControls.ballType.EMPTY);
-//            telemetry.update();
-
-
-            //sleep(50);
+            telemetry.addData("Status", "opModeIsActive");
+            telemetry.addLine();
+            telemetry.update();
 
             //Add option to enable brakes when sharbell holds a
             drive.setDriveMotorZeroPowerBehavior(gamepad1.b);
 
+
             // Sets the power to the drive motors based on current gamepad inputs
             drive.setPower(gamepad1.left_stick_y, gamepad1.left_stick_x,
                     gamepad1.right_stick_x, gamepad1.left_trigger);
+
 
             // runs the intake based on these settings
             intake.run(gamepad1.a);
@@ -82,11 +76,8 @@ public class TeleOpMain extends LinearOpMode {
             // Shooter
             shooter.adjustYaw(shooter.getMoveAmount(gamepad2.left_stick_x), motors.launchYaw);
 
-            shooter.manualSetPower(motors.flywheel, gamepad1.y);
+            shooter.manualSetPower(motors.flywheel, gamepad1.right_bumper);
 
-            // Slow down the loop because for some reason it goes to fast and causes the motors to
-            // not work properly
-            //sleep(50);
         }
         // Do not place any drive code here outside the while loop (will fail inspection)
     }
