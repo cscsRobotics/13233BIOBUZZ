@@ -39,7 +39,7 @@ public class TeleOpMain extends LinearOpMode {
         ShooterControls shooter = new ShooterControls();
         TransportControls transport = new TransportControls();
 
-        transport.servoInit(motors.leftTop, motors.leftBottom, motors.rightTop, motors.rightBottom);
+        transport.servoInit(motors.leftTop, motors.leftBottom, motors.rightTop, motors.rightBottom,motors.wheel);
         shooter.initAllMotors(motors.launchYaw, motors.flywheel);
 
         // init the telemetry screen

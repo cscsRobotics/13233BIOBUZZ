@@ -17,7 +17,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  */
 public class MotorConstructor {
 
-    private final DcMotor transWheel;
     // Drive Motor
     public DcMotor leftFront;
     public DcMotor rightFront;
@@ -31,7 +30,8 @@ public class MotorConstructor {
     //public DcMotorEx flywheel;
     public DcMotorEx flywheel;
     public DcMotor launchYaw; // yaw is rotation left to right
-
+    //transport motors
+    public DcMotor transWheel;
 
     //Transport Servos
     public CRServo rightTop;

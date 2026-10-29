@@ -15,11 +15,13 @@ public class TransportControls {
     public void servoInit(CRServo transportServoLeftTopInput,
                           CRServo transportServoLeftBottomInput,
                           CRServo transportServoRightTopInput,
-                          CRServo transportServoRightBottomInput) {
+                          CRServo transportServoRightBottomInput,
+                          DcMotor transWheelInput) {
         transportServoLeftTop = transportServoLeftTopInput;
         transportServoLeftBottom = transportServoLeftBottomInput;
         transportServoRightTop = transportServoRightTopInput;
         transportServoRightBottom = transportServoRightBottomInput;
+        transWheel = transWheelInput;
     }
 
     public void setPower(float power) {
@@ -27,6 +29,7 @@ public class TransportControls {
         transportServoLeftBottom.setPower(power);
         transportServoRightTop.setPower(power);
         transportServoRightBottom.setPower(power);
+        transWheel.setPower(power);
 
     }
 
@@ -44,7 +47,7 @@ public class TransportControls {
                 transportServoLeftBottom.setPower(-power);
                 transportServoRightTop.setPower(-power);
                 transportServoRightBottom.setPower(-power);
-                transWheel.setPower(power);
+                transWheel.setPower(-power);
                 break;
         }
     }
@@ -64,12 +67,14 @@ public class TransportControls {
                 transportServoLeftBottom.setPower(motorPower);
                 transportServoRightTop.setPower(motorPower);
                 transportServoRightBottom.setPower(motorPower);
+                transWheel.setPower(motorPower);
                 break;
             case REVERSE:
                 transportServoLeftTop.setPower(-motorPower);
                 transportServoLeftBottom.setPower(-motorPower);
                 transportServoRightTop.setPower(-motorPower);
                 transportServoRightBottom.setPower(-motorPower);
+                transWheel.setPower(-motorPower);
                 break;
         }
     }
