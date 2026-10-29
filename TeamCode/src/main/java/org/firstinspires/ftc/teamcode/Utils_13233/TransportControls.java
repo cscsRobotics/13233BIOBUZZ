@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Utils_13233;
 
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public class TransportControls {
@@ -8,6 +9,8 @@ public class TransportControls {
     public CRServo transportServoLeftBottom;
     public CRServo transportServoRightTop;
     public CRServo transportServoRightBottom;
+
+    public DcMotor transWheel;
 
     public void servoInit(CRServo transportServoLeftTopInput,
                           CRServo transportServoLeftBottomInput,
@@ -34,12 +37,14 @@ public class TransportControls {
                 transportServoLeftBottom.setPower(power);
                 transportServoRightTop.setPower(power);
                 transportServoRightBottom.setPower(power);
+                transWheel.setPower(power);
                 break;
             case REVERSE:
                 transportServoLeftTop.setPower(-power);
                 transportServoLeftBottom.setPower(-power);
                 transportServoRightTop.setPower(-power);
                 transportServoRightBottom.setPower(-power);
+                transWheel.setPower(power);
                 break;
         }
     }

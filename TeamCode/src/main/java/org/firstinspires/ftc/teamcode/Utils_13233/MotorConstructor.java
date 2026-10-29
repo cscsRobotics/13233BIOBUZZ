@@ -17,6 +17,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  */
 public class MotorConstructor {
 
+    private final DcMotor transWheel;
     // Drive Motor
     public DcMotor leftFront;
     public DcMotor rightFront;
@@ -53,7 +54,9 @@ public class MotorConstructor {
 
         // Intake
         intake = hardwareMap.get(DcMotor.class, "intake");
-
+        //transport motor
+        transWheel = hardwareMap.get(DcMotor.class,"transWheel");
+    
         // Launcher
         //flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
         //flywheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
