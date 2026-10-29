@@ -56,6 +56,7 @@ public class TeleOpMain extends LinearOpMode {
             // Add status data to driver hub display
             telemetry.addData("Status", "opModeIsActive");
             telemetry.addLine();
+            telemetry.addData("Flywheel RPM: ", shooter.getFlyWheelSpeed(motors.flywheel));
             telemetry.update();
 
             //Add option to enable brakes when sharbell holds a
@@ -76,8 +77,11 @@ public class TeleOpMain extends LinearOpMode {
             // Shooter
             shooter.adjustYaw(shooter.getMoveAmount(gamepad2.left_stick_x), motors.launchYaw);
 
-            shooter.manualSetPower(motors.flywheel, gamepad1.right_bumper);
+            shooter.setVelocity(motors.flywheel, gamepad1.right_bumper);
 
+            //shooter.setVelocity(motors.flywheel, gamepad1.right_bumper);
+
+            sleep(100);
         }
         // Do not place any drive code here outside the while loop (will fail inspection)
     }

@@ -28,23 +28,34 @@ public class ShooterControls {
         return (int) (controllerInput * 100) / 10; // cast the input from a controller to an int
     }
 
-//    public double getFlyWheelSpeed(DcMotorEx flywheel) {
-//        // 20:1 (not exact) gear tick x 28 counts per revolution = 560 counter per revolution
-    // The encoder ticks are wrong I used the wrong motor
-//        // (Flywheel tick per second / 560) = rps * 60 = rpm
-//        return (flywheel.getVelocity() / 560) * 60;
-//    }
+    public double getFlyWheelSpeed(DcMotorEx flywheel) {
+        // Since the flywheel is a 1:1 motor it does not need to get convert its ticks back to base
+        return (flywheel.getVelocity() / 28) * 60;
+    }
 
-    public void manualSetPower(DcMotor flywheel, float power) {
+    public void manualSetPower(DcMotorEx flywheel, float power) {
         flywheel.setPower(power);
     }
 
-    public void manualSetPower(DcMotor flywheel, boolean power) {
+    public void manualSetPower(DcMotorEx flywheel, boolean power) {
         if (power) {
             flywheel.setPower(1.0);
         } else {
             flywheel.setPower(0.0);
         }
+    }
+
+    /**
+     *
+     * @param flywheel the motor you wish to use as the flywheel
+     * @param power    the motor speed as a precent 0-100
+     */
+    public void setVelocity(DcMotorEx flywheel, double power) {
+        flywheel.setVelocity(power * 60);
+    }
+
+    public void setVelocity(DcMotorEx flywheel, boolean isActive) {
+        flywheel.setVelocity((isActive) ? 6000 : 0);
     }
 
     public void adjustYaw(int input, DcMotor motor) {
