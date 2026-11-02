@@ -15,12 +15,14 @@ public class TransportControls {
     public void servoInit(CRServo transportServoLeftTopInput,
                           CRServo transportServoLeftBottomInput,
                           CRServo transportServoRightTopInput,
-                          CRServo transportServoRightBottomInput,
-                          DcMotor transWheelInput) {
+                          CRServo transportServoRightBottomInput) {
         transportServoLeftTop = transportServoLeftTopInput;
         transportServoLeftBottom = transportServoLeftBottomInput;
         transportServoRightTop = transportServoRightTopInput;
         transportServoRightBottom = transportServoRightBottomInput;
+    }
+
+    public void motorInit(DcMotor transWheelInput) {
         transWheel = transWheelInput;
     }
 
