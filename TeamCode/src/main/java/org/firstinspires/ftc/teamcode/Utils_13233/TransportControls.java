@@ -5,10 +5,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public class TransportControls {
-    public CRServo transportServoLeftTop;
-    public CRServo transportServoLeftBottom;
-    public CRServo transportServoRightTop;
-    public CRServo transportServoRightBottom;
+    public CRServo transportServoLeftTop;//0
+    public CRServo transportServoLeftBottom;//2
+    public CRServo transportServoRightTop;//1
+    public CRServo transportServoRightBottom;//3
 
     public DcMotor transWheel;
 
