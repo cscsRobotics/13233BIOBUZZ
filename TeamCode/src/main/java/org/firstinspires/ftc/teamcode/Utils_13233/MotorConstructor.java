@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 //import com.qualcomm.robotcore.hardware.IMU;
 //import com.qualcomm.robotcore.hardware.Servo;
 //import com.qualcomm.robotcore.hardware.VoltageSensor;
@@ -34,10 +35,10 @@ public class MotorConstructor {
     public DcMotor transWheel;
 
     //Transport Servos
-    public CRServo rightTop;
-    public CRServo leftTop;
-    public CRServo leftBottom;
-    public CRServo rightBottom;
+    public Servo flicker;//REMEMBER TO CHANGE HUB NAME
+    public CRServo bottomTransportServo;//REMEMBER TO CHANGE HUB NAME
+    public CRServo leftBottom;//USELESS FOR NOW
+    public CRServo rightBottom;//ALSO USELESS
 
     public MotorConstructor(HardwareMap hardwareMap) {
         // Map main Drive Motors
@@ -65,11 +66,10 @@ public class MotorConstructor {
         launchYaw = hardwareMap.get(DcMotor.class, "launchYaw");
 
 
-        // Transport Servos should all be CR servos in order to let
-        rightTop = hardwareMap.get(CRServo.class, "rightTop");
-        rightTop.setDirection(CRServo.Direction.REVERSE);
+        // Transport Servos should all be CR(besides flicker) servos in order to let
+        flicker = hardwareMap.get(Servo.class,"flicker");
 
-        leftTop = hardwareMap.get(CRServo.class, "leftTop");
+        bottomTransportServo = hardwareMap.get(CRServo.class, "bottomTransportServo");
 
         rightBottom = hardwareMap.get(CRServo.class, "rightBottom");
         rightBottom.setDirection(CRServo.Direction.REVERSE);
