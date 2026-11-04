@@ -3,22 +3,23 @@ package org.firstinspires.ftc.teamcode.Utils_13233;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class TransportControls {
-    public CRServo transportServoLeftTop;//0
+    public CRServo bottomTransportServo;//0
     public CRServo transportServoLeftBottom;//2
-    public CRServo transportServoRightTop;//1
+    public CRServo flicker;//1
     public CRServo transportServoRightBottom;//3
 
     public DcMotor transWheel;
 
-    public void servoInit(CRServo transportServoLeftTopInput,
+    public void servoInit(CRServo bottomTransportServoInput,
                           CRServo transportServoLeftBottomInput,
-                          CRServo transportServoRightTopInput,
+                          CRServo flickerInput,
                           CRServo transportServoRightBottomInput) {
-        transportServoLeftTop = transportServoLeftTopInput;
+        bottomTransportServo = bottomTransportServoInput;
         transportServoLeftBottom = transportServoLeftBottomInput;
-        transportServoRightTop = transportServoRightTopInput;
+        flicker = flickerInput;
         transportServoRightBottom = transportServoRightBottomInput;
     }
 
@@ -27,9 +28,9 @@ public class TransportControls {
     }
 
     public void setPower(float power) {
-        transportServoLeftTop.setPower(power);
+        bottomTransportServo.setPower(power);
         transportServoLeftBottom.setPower(power);
-        transportServoRightTop.setPower(power);
+        //flicker.setPower(power);
         transportServoRightBottom.setPower(power);
         transWheel.setPower(power);
 
@@ -38,16 +39,16 @@ public class TransportControls {
     public void setPower(DcMotorSimple.Direction direction, float power) {
         switch (direction) {
             case FORWARD:
-                transportServoLeftTop.setPower(power);
+                bottomTransportServo.setPower(power);
                 transportServoLeftBottom.setPower(power);
-                transportServoRightTop.setPower(power);
+                //flicker.setPower(power);
                 transportServoRightBottom.setPower(power);
                 transWheel.setPower(power);
                 break;
             case REVERSE:
-                transportServoLeftTop.setPower(-power);
+                bottomTransportServo.setPower(-power);
                 transportServoLeftBottom.setPower(-power);
-                transportServoRightTop.setPower(-power);
+                //flicker.setPower(-power);
                 transportServoRightBottom.setPower(-power);
                 transWheel.setPower(-power);
                 break;
@@ -65,16 +66,16 @@ public class TransportControls {
 
         switch (direction) {
             case FORWARD:
-                transportServoLeftTop.setPower(motorPower);
+                bottomTransportServo.setPower(motorPower);
                 transportServoLeftBottom.setPower(motorPower);
-                transportServoRightTop.setPower(motorPower);
+                flicker.setPower(motorPower);
                 transportServoRightBottom.setPower(motorPower);
                 transWheel.setPower(motorPower);
                 break;
             case REVERSE:
-                transportServoLeftTop.setPower(-motorPower);
+                bottomTransportServo.setPower(-motorPower);
                 transportServoLeftBottom.setPower(-motorPower);
-                transportServoRightTop.setPower(-motorPower);
+                flicker.setPower(-motorPower);
                 transportServoRightBottom.setPower(-motorPower);
                 transWheel.setPower(-motorPower);
                 break;

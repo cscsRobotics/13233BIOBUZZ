@@ -34,7 +34,7 @@ public class MotorConstructor {
     public DcMotor transWheel;
 
     //Transport Servos
-    public CRServo rightTop;
+    public CRServo flicker;
     public CRServo leftTop;
     public CRServo leftBottom;
     public CRServo rightBottom;
@@ -65,9 +65,9 @@ public class MotorConstructor {
         launchYaw = hardwareMap.get(DcMotor.class, "launchYaw");
 
 
-        // Transport Servos should all be CR servos in order to let
-        rightTop = hardwareMap.get(CRServo.class, "rightTop");
-        rightTop.setDirection(CRServo.Direction.REVERSE);
+        // Transport Servos should all be CR servos in order to let(BESIDES FLICKER)
+        flicker = hardwareMap.get(CRServo.class, "flicker");
+        flicker.setDirection(CRServo.Direction.REVERSE);
 
         leftTop = hardwareMap.get(CRServo.class, "leftTop");
 
