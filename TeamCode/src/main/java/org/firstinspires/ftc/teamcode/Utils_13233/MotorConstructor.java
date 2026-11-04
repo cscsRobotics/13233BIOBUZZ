@@ -2,16 +2,12 @@ package org.firstinspires.ftc.teamcode.Utils_13233;
 
 //import com.qualcomm.hardware.limelightvision.Limelight3A;
 
-import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 //import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.IMU;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.VoltageSensor;
 //import com.qualcomm.robotcore.hardware.IMU;
 //import com.qualcomm.robotcore.hardware.Servo;
 //import com.qualcomm.robotcore.hardware.VoltageSensor;
@@ -38,15 +34,10 @@ public class MotorConstructor {
     public DcMotor transWheel;
 
     //Transport Servos
-    public Servo flicker;//REMEMBER TO CHANGE HUB NAME
-    public CRServo bottomTransportServo;//REMEMBER TO CHANGE HUB NAME
-    public CRServo leftBottom;//USELESS FOR NOW
-    public CRServo rightBottom;//ALSO USELESS
-
-    //Sensors
-    public VoltageSensor VoltSens;
-    public IMU imu;
-    public Limelight3A limelight;
+    public CRServo rightTop;
+    public CRServo leftTop;
+    public CRServo leftBottom;
+    public CRServo rightBottom;
 
     public MotorConstructor(HardwareMap hardwareMap) {
         // Map main Drive Motors
@@ -74,25 +65,16 @@ public class MotorConstructor {
         launchYaw = hardwareMap.get(DcMotor.class, "launchYaw");
 
 
-        // Transport Servos should all be CR(besides flicker) servos in order to let
-        flicker = hardwareMap.get(Servo.class,"flicker");
+        // Transport Servos should all be CR servos in order to let
+        rightTop = hardwareMap.get(CRServo.class, "rightTop");
+        rightTop.setDirection(CRServo.Direction.REVERSE);
 
-        bottomTransportServo = hardwareMap.get(CRServo.class, "bottomTransportServo");
+        leftTop = hardwareMap.get(CRServo.class, "leftTop");
 
         rightBottom = hardwareMap.get(CRServo.class, "rightBottom");
         rightBottom.setDirection(CRServo.Direction.REVERSE);
 
         leftBottom = hardwareMap.get(CRServo.class, "leftBottom");
-        //sensors init
 
-        // IC2 port 0 on a Core Device Interface Module
-        imu = hardwareMap.get(IMU.class, "imu");
-        // Control hub voltage sensor
-        // Used to move at a constant speed in auto regardless of battery voltage
-        VoltSens = hardwareMap.voltageSensor.get("Control Hub");
-        //limelight for apriltags/auto tracking turret
-        limelight = hardwareMap.get(Limelight3A.class, "limelight");
-        limelight.pipelineSwitch(0);
-        limelight.start();
     }
 }

@@ -39,7 +39,7 @@ public class TeleOpMain extends LinearOpMode {
         ShooterControls shooter = new ShooterControls();
         TransportControls transport = new TransportControls();
 
-        transport.servoInit(motors.bottomTransportServo, motors.leftBottom, motors.flicker, motors.rightBottom);
+        transport.servoInit(motors.leftTop, motors.leftBottom, motors.rightTop, motors.rightBottom);
         transport.motorInit(motors.transWheel);
         shooter.initAllMotors(motors.launchYaw, motors.flywheel);
 
@@ -60,7 +60,7 @@ public class TeleOpMain extends LinearOpMode {
             telemetry.addData("Flywheel RPM: ", shooter.getFlyWheelSpeed(motors.flywheel));
             telemetry.update();
 
-            //Add option to enable brakes when driver 1 holds a
+            //Add option to enable brakes when sharbell holds a
             drive.setDriveMotorZeroPowerBehavior(gamepad1.b);
 
 
