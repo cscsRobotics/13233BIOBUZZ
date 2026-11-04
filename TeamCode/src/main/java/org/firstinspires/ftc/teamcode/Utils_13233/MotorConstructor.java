@@ -35,7 +35,7 @@ public class MotorConstructor {
 
     //Transport Servos
     public CRServo flicker;
-    public CRServo leftTop;
+    public CRServo bottomTransportServo;
     public CRServo leftBottom;
     public CRServo rightBottom;
 
@@ -69,7 +69,7 @@ public class MotorConstructor {
         flicker = hardwareMap.get(CRServo.class, "flicker");
         flicker.setDirection(CRServo.Direction.REVERSE);
 
-        leftTop = hardwareMap.get(CRServo.class, "leftTop");
+        bottomTransportServo = hardwareMap.get(CRServo.class, "bottomTransportServo");
 
         rightBottom = hardwareMap.get(CRServo.class, "rightBottom");
         rightBottom.setDirection(CRServo.Direction.REVERSE);
