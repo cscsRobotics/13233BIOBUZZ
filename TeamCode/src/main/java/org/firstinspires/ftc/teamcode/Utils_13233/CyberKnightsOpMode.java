@@ -1,11 +1,11 @@
 package org.firstinspires.ftc.teamcode.Utils_13233;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
- 
+
 public abstract class CyberKnightsOpMode extends LinearOpMode {
     public DriveControls drive = new DriveControls(hardwareMap);
     public MotorConstructor motors = new MotorConstructor(hardwareMap);
-    public IntakeControl intake = new IntakeControl(hardwareMap);
+    public IntakeControl intake = new IntakeControl();
     public ShooterControls shooter = new ShooterControls();
     public TransportControls transport = new TransportControls();
 
@@ -16,5 +16,6 @@ public abstract class CyberKnightsOpMode extends LinearOpMode {
         transport.servoInit(motors.bottomTransportServo, motors.leftBottom, motors.flicker, motors.rightBottom);
         transport.motorInit(motors.transWheel);
         shooter.initAllMotors(motors.launchYaw, motors.flywheel);
+        intake.motorInit(motors.intake);
     }
 }
