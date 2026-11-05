@@ -26,7 +26,15 @@ public class TransportControls {
     public void motorInit(DcMotor transWheelInput) {
         transWheel = transWheelInput;
     }
-
+    public void setFlicker(boolean forward, boolean reverse) {//added by jacob 11/4/26
+        if (forward) {
+            flicker.setPower(1.0);
+        } else if (reverse) {
+            flicker.setPower(-1.0);
+        } else {
+            flicker.setPower(0.0);
+        }
+    }
     public void setPower(float power) {
         bottomTransportServo.setPower(power);
         transportServoLeftBottom.setPower(power);
@@ -68,14 +76,14 @@ public class TransportControls {
             case FORWARD:
                 bottomTransportServo.setPower(motorPower);
                 transportServoLeftBottom.setPower(motorPower);
-                flicker.setPower(motorPower);
+               // flicker.setPower(motorPower);
                 transportServoRightBottom.setPower(motorPower);
                 transWheel.setPower(motorPower);
                 break;
             case REVERSE:
                 bottomTransportServo.setPower(-motorPower);
                 transportServoLeftBottom.setPower(-motorPower);
-                flicker.setPower(-motorPower);
+               // flicker.setPower(-motorPower);
                 transportServoRightBottom.setPower(-motorPower);
                 transWheel.setPower(-motorPower);
                 break;
