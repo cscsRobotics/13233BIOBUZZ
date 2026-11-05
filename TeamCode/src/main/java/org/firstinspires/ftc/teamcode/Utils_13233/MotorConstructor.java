@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 //import com.qualcomm.robotcore.hardware.IMU;
 //import com.qualcomm.robotcore.hardware.Servo;
 //import com.qualcomm.robotcore.hardware.VoltageSensor;
@@ -27,14 +28,14 @@ public class MotorConstructor {
     public DcMotor intake;
 
     //Shooter
-    //public DcMotorEx flywheel;
     public DcMotorEx flywheel;
+
     public DcMotor launchYaw; // yaw is rotation left to right
     //transport motors
     public DcMotor transWheel;
 
     //Transport Servos
-    public CRServo flicker;
+    public Servo flicker;
     public CRServo bottomTransportServo;
     public CRServo leftBottom;
     public CRServo rightBottom;
@@ -55,26 +56,22 @@ public class MotorConstructor {
         // Intake
         intake = hardwareMap.get(DcMotor.class, "intake");
         //transport motor
-        transWheel = hardwareMap.get(DcMotor.class,"transWheel");
-    
-        // Launcher
-        //flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
-        //flywheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
+        transWheel = hardwareMap.get(DcMotor.class, "transWheel");
 
+        // Launcher
+        flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
         launchYaw = hardwareMap.get(DcMotor.class, "launchYaw");
 
 
         // Transport Servos should all be CR servos in order to let(BESIDES FLICKER)
-        flicker = hardwareMap.get(CRServo.class, "flicker");
-        flicker.setDirection(CRServo.Direction.REVERSE);
-
+        flicker = hardwareMap.get(Servo.class, "flicker");
         bottomTransportServo = hardwareMap.get(CRServo.class, "bottomTransportServo");
-
         rightBottom = hardwareMap.get(CRServo.class, "rightBottom");
+        leftBottom = hardwareMap.get(CRServo.class, "leftBottom");
+
+        flicker.setDirection(Servo.Direction.REVERSE);
         rightBottom.setDirection(CRServo.Direction.REVERSE);
 
-        leftBottom = hardwareMap.get(CRServo.class, "leftBottom");
 
     }
 }
