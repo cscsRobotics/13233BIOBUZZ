@@ -4,6 +4,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 import org.firstinspires.ftc.teamcode.Utils_13233.DriveControls;
@@ -70,12 +71,12 @@ public class TeleOpMain extends LinearOpMode {
 
 
             // runs the intake based on these settings
-            intake.run(gamepad1.a);
+            intake.run(gamepad1.a,gamepad1.x);
 
             transport.setPower(DcMotorSimple.Direction.FORWARD, gamepad1.dpad_up);//runs transport servos/motor
             transport.setPower(DcMotorSimple.Direction.REVERSE, gamepad1.dpad_down);
             // Hold X to run the flicker forward, hold Y to run it in reverse
-            transport.setFlicker(gamepad1.x, gamepad1.y);
+            transport.setFlicker(gamepad1.left_bumper);
             // Shooter
             shooter.adjustYaw(shooter.getMoveAmount(gamepad2.left_stick_x), motors.launchYaw);
 

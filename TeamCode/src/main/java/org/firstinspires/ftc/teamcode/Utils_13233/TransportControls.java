@@ -8,14 +8,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class TransportControls {
     public CRServo bottomTransportServo;//0
     public CRServo transportServoLeftBottom;//2
-    public CRServo flicker;//1
+    public Servo flicker;//1
     public CRServo transportServoRightBottom;//3
 
     public DcMotor transWheel;
 
     public void servoInit(CRServo bottomTransportServoInput,
                           CRServo transportServoLeftBottomInput,
-                          CRServo flickerInput,
+                          Servo flickerInput,
                           CRServo transportServoRightBottomInput) {
         bottomTransportServo = bottomTransportServoInput;
         transportServoLeftBottom = transportServoLeftBottomInput;
@@ -26,13 +26,11 @@ public class TransportControls {
     public void motorInit(DcMotor transWheelInput) {
         transWheel = transWheelInput;
     }
-    public void setFlicker(boolean forward, boolean reverse) {//added by jacob 11/4/26
+    public void setFlicker(boolean forward) {//added by jacob 11/4/26
         if (forward) {
-            flicker.setPower(1.0);
-        } else if (reverse) {
-            flicker.setPower(-1.0);
+            flicker.setPosition(0.2);
         } else {
-            flicker.setPower(0.0);
+            flicker.setPosition(0.7);
         }
     }
     public void setPower(float power) {

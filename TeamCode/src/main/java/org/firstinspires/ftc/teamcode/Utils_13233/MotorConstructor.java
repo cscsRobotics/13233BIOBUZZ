@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 //import com.qualcomm.robotcore.hardware.IMU;
 //import com.qualcomm.robotcore.hardware.Servo;
 //import com.qualcomm.robotcore.hardware.VoltageSensor;
@@ -34,7 +35,7 @@ public class MotorConstructor {
     public DcMotor transWheel;
 
     //Transport Servos
-    public CRServo flicker;
+    public Servo flicker;
     public CRServo bottomTransportServo;
     public CRServo leftBottom;
     public CRServo rightBottom;
@@ -66,8 +67,7 @@ public class MotorConstructor {
 
 
         // Transport Servos should all be CR servos in order to let(BESIDES FLICKER)
-        flicker = hardwareMap.get(CRServo.class, "flicker");
-        flicker.setDirection(CRServo.Direction.REVERSE);
+        flicker = hardwareMap.get(Servo.class, "flicker");
 
         bottomTransportServo = hardwareMap.get(CRServo.class, "bottomTransportServo");
 

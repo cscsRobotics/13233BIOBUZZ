@@ -17,4 +17,14 @@ public class IntakeControl {
         }
     }
 
+    // Intake forward on one button, reverse on another
+    public void run(boolean isIntake, boolean isReverse) {
+        if (isIntake) {
+            motors.intake.setPower(1);
+        } else if (isReverse) {
+            motors.intake.setPower(-1);
+        } else {
+            motors.intake.setPower(0);
+        }
+    }
 }
