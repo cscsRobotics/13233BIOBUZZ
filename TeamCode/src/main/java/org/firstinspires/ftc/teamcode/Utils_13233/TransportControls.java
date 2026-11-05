@@ -26,7 +26,16 @@ public class TransportControls {
     public void motorInit(DcMotor transWheelInput) {
         transWheel = transWheelInput;
     }
-
+    // Transport forward on one button, reverse on another, stopped otherwise
+    public void run(boolean forward, boolean reverse) {
+        if (forward) {
+            setPower(1.0f);
+        } else if (reverse) {
+            setPower(-1.0f);
+        } else {
+            setPower(0.0f);
+        }
+    }
     public void setFlicker(boolean forward, boolean reverse) { // added by jacob 11/4/26
         if (forward) {
             flicker.setPosition(1.0);
