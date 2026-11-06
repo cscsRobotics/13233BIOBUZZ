@@ -46,6 +46,8 @@ public class ShooterControls {
     }
 
     /**
+     * Sets the  velocity you wish to use for the flywheel currently hardwired for 6000 rpm 1:1
+     * yellow jacket motor
      *
      * @param flywheel the motor you wish to use as the flywheel
      * @param power    the motor speed as a precent 0-100

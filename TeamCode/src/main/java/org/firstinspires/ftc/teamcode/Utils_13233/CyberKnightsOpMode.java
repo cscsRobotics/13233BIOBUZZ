@@ -14,7 +14,7 @@ public abstract class CyberKnightsOpMode extends LinearOpMode {
 
     }
 
-    public void initalize() {
+    public void initialize() {
         motors = new MotorConstructor(hardwareMap);
         drive = new DriveControls(hardwareMap);
         intake = new IntakeControl();

@@ -4,7 +4,6 @@ package org.firstinspires.ftc.teamcode;
 import org.firstinspires.ftc.teamcode.Utils_13233.CyberKnightsOpMode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 
 
@@ -22,7 +21,7 @@ public class TeleOpMain extends CyberKnightsOpMode {
     @Override
     public void runOpMode() {
         // Create the utils classes
-        initalize();
+        initialize();
 
         // Wait for the game to start (driver presses PLAY)
         // The waitForStart() function will wait for the start button to begin
@@ -51,7 +50,7 @@ public class TeleOpMain extends CyberKnightsOpMode {
 
             transport.run(gamepad1.dpad_down, gamepad1.dpad_up);// runs transport servos/motor, hopefully fixed issue with dpadup
             // Hold X to run the flicker forward, hold Y to run it in reverse
-            transport.setFlicker(gamepad1.x, gamepad1.y); // this needs to be updated with the code sharbell wrote
+            transport.setFlicker(gamepad1.left_bumper); // this needs to be updated with the code sharbell wrote
 
             // Shooter
             shooter.adjustYaw(shooter.getMoveAmount(gamepad2.left_stick_x), motors.launchYaw);// inop, need this working for saturday

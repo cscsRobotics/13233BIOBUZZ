@@ -29,7 +29,7 @@ public class MotorConstructor {
 
     //Shooter
     public DcMotorEx flywheel;
-
+    public Servo hood;
     public DcMotor launchYaw; // yaw is rotation left to right
     //transport motors
     public DcMotor transWheel;
@@ -61,6 +61,7 @@ public class MotorConstructor {
         // Launcher
         flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
         launchYaw = hardwareMap.get(DcMotor.class, "launchYaw");
+        hood = hardwareMap.get(Servo.class, "hood");
 
 
         // Transport Servos should all be CR servos in order to let(BESIDES FLICKER)
