@@ -48,7 +48,7 @@ public class TeleOpMain extends CyberKnightsOpMode {
             // runs the intake based on these settings
             intake.toggle(gamepad1.a,gamepad1.x);
 
-            transport.run(gamepad1.dpad_down, gamepad1.dpad_up);//runs transport servos/motor, hopefully fixed issue with dpadup
+            transport.run(gamepad1.dpad_down, gamepad1.dpad_up);// runs transport servos/motor, hopefully fixed issue with dpadup
             // Hold X to run the flicker forward, hold Y to run it in reverse
             transport.setFlicker(gamepad1.x, gamepad1.y); // this needs to be updated with the code sharbell wrote
             
