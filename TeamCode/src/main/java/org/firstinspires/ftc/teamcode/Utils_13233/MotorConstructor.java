@@ -1,13 +1,17 @@
 package org.firstinspires.ftc.teamcode.Utils_13233;
 
-import com.qualcomm.hardware.limelightvision.Limelight3A;
+//import com.qualcomm.hardware.limelightvision.Limelight3A;
+
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+//import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.VoltageSensor;
+//import com.qualcomm.robotcore.hardware.IMU;
+//import com.qualcomm.robotcore.hardware.Servo;
+//import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 /**
  * Class holds motors and servos that are used throughout the code
@@ -22,6 +26,20 @@ public class MotorConstructor {
 
     //Intake Motor
     public DcMotor intake;
+
+    //Shooter
+    public DcMotorEx flywheel;
+    public Servo hood;
+
+    public DcMotor launchYaw; // yaw is rotation left to right
+    //transport motors
+    public DcMotor transWheel;
+
+    //Transport Servos
+    public Servo flicker;
+    public CRServo bottomTransportServo;
+    public CRServo leftBottom;
+    public CRServo rightBottom;
 
     public MotorConstructor(HardwareMap hardwareMap) {
         // Map main Drive Motors
@@ -38,5 +56,24 @@ public class MotorConstructor {
 
         // Intake
         intake = hardwareMap.get(DcMotor.class, "intake");
+        //transport motor
+        transWheel = hardwareMap.get(DcMotor.class, "transWheel");
+
+        // Launcher
+        flywheel = hardwareMap.get(DcMotorEx.class, "flywheel");
+        launchYaw = hardwareMap.get(DcMotor.class, "launchYaw");
+        hood = hardwareMap.get(Servo.class, "hood");
+
+
+        // Transport Servos should all be CR servos in order to let(BESIDES FLICKER)
+        flicker = hardwareMap.get(Servo.class, "flicker");
+        bottomTransportServo = hardwareMap.get(CRServo.class, "bottomTransportServo");
+        rightBottom = hardwareMap.get(CRServo.class, "rightBottom");
+        leftBottom = hardwareMap.get(CRServo.class, "leftBottom");
+
+        flicker.setDirection(Servo.Direction.REVERSE);
+        rightBottom.setDirection(CRServo.Direction.REVERSE);
+
+
     }
 }

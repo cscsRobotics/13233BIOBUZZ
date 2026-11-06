@@ -2,8 +2,11 @@ package org.firstinspires.ftc.teamcode.Utils_13233;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
+
 public class DriveControls {
     private final MotorConstructor motors;
+
     public DriveControls(HardwareMap hardwareMap) {
         this.motors = new MotorConstructor(hardwareMap);
     }
@@ -19,8 +22,8 @@ public class DriveControls {
      * @param controlRightStick Right Stick setting, controls left right turn
      * @param speedLimiter      Trigger setting, controls speed of the robot
      */
-    public void setDrivePower(float controlLeftStickY, float controlLeftStickX,
-                              float controlRightStick, float speedLimiter) {
+    public void setPower(float controlLeftStickY, float controlLeftStickX,
+                         float controlRightStick, float speedLimiter) {
         // For readability and flexibility for future control input changes
         //noinspection UnnecessaryLocalVariable
         float forward = controlLeftStickY;
@@ -30,24 +33,47 @@ public class DriveControls {
         float rotate = controlRightStick;
         float speed = Math.max(1.0f - speedLimiter, 0.5f);
 
-        if (forward != 0 || rotate != 0){
-            setDriveFloat();
-        }
-        else{
-            setDriveFloat();
-        }
-
         // Calculate the power for each motor
-        float frontRightPower = (forward - strafe + rotate) * (speed);
-        float frontLeftPower = (forward + strafe - rotate) * (speed);
-        float backRightPower = (forward + strafe + rotate) * (speed);
-        float backLeftPower = (forward - strafe - rotate) * (speed);
+        float frontRightPower = (forward + strafe + rotate) * (speed);
+        float frontLeftPower = (forward - strafe - rotate) * (speed);
+        float backRightPower = (forward - strafe + rotate) * (speed);
+        float backLeftPower = (forward + strafe - rotate) * (speed);
 
         // Set the power for each of the motors
         motors.rightFront.setPower(frontRightPower);
         motors.leftFront.setPower(frontLeftPower);
         motors.rightBack.setPower(backRightPower);
         motors.leftBack.setPower(backLeftPower);
+
+        if (isJoystickInUse(controlLeftStickX, controlLeftStickY, controlRightStick)) {
+            setDriveFloat();
+        } else {
+            setDriveBrake();
+        }
+    }
+
+    /**
+     * Checks if one of three joysticks is above the deadzone threshold
+     *
+     * @return if one of the joysticks is above the threshold is returns true else false
+     */
+    boolean isJoystickInUse(float leftStickX, float leftStickY,
+                            float rightStickX) {
+        // check if one of the joysticks is in use
+        return isJoystickInDeadZone(leftStickX) || isJoystickInDeadZone(leftStickY)
+                || isJoystickInDeadZone(rightStickX);
+    }
+
+    /**
+     * Checks if one a joystick is above the deadzone threshold
+     *
+     * @return if one of the joysticks is above the threshold is returns true else false
+     */
+    boolean isJoystickInDeadZone(float stickAxis) {
+        double joystickDeadzone = 0.1;
+
+        // check to see if the joystick is in use
+        return stickAxis >= joystickDeadzone || stickAxis <= -joystickDeadzone;
     }
 
     /**
@@ -55,8 +81,8 @@ public class DriveControls {
      *
      * @param controlLeftStickY Left stick Y setting, up/down
      */
-    public void setDrivePower(float controlLeftStickY) {
-        setDrivePower(controlLeftStickY, 0.0f, 0.0f, 0.0f);
+    public void setPower(float controlLeftStickY) {
+        setPower(controlLeftStickY, 0.0f, 0.0f, 0.0f);
     }
 
 
