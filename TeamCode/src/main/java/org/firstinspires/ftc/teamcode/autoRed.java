@@ -7,6 +7,7 @@ import org.firstinspires.ftc.teamcode.Utils_13233.CyberKnightsOpMode;
 public class autoRed extends CyberKnightsOpMode {
     @Override
     public void runOpMode() {
+        initialize();
 
         waitForStart();
         if (opModeIsActive()) {
