@@ -6,10 +6,10 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class TransportControls {
-    public CRServo bottomTransportServo;//0
-    public CRServo transportServoLeftBottom;//2
-    public Servo flicker;//1
-    public CRServo transportServoRightBottom;//3
+    public CRServo bottomTransportServo; // 0
+    public CRServo transportServoLeftBottom; // 2
+    public Servo flicker; // 1
+    public CRServo transportServoRightBottom; // 3
 
     public DcMotor transWheel;
 
@@ -26,13 +26,26 @@ public class TransportControls {
     public void motorInit(DcMotor transWheelInput) {
         transWheel = transWheelInput;
     }
-    public void setFlicker(boolean forward) {//added by jacob 11/4/26
+    // Transport forward on one button, reverse on another, stopped otherwise
+    public void run(boolean forward, boolean reverse) {
         if (forward) {
-            flicker.setPosition(0.2);
+            setPower(1.0f);
+        } else if (reverse) {
+            setPower(-1.0f);
         } else {
-            flicker.setPosition(0.7);
+            setPower(0.0f);
         }
     }
+    public void setFlicker(boolean forward, boolean reverse) { // added by jacob 11/4/26
+        if (forward) {
+            flicker.setPosition(1.0);
+        } else if (reverse) {
+            flicker.setPosition(-1.0);
+        } else {
+            flicker.setPosition(0.0);
+        }
+    }
+
     public void setPower(float power) {
         bottomTransportServo.setPower(power);
         transportServoLeftBottom.setPower(power);
@@ -74,14 +87,14 @@ public class TransportControls {
             case FORWARD:
                 bottomTransportServo.setPower(motorPower);
                 transportServoLeftBottom.setPower(motorPower);
-               // flicker.setPower(motorPower);
+                // flicker.setPower(motorPower);
                 transportServoRightBottom.setPower(motorPower);
                 transWheel.setPower(motorPower);
                 break;
             case REVERSE:
                 bottomTransportServo.setPower(-motorPower);
                 transportServoLeftBottom.setPower(-motorPower);
-               // flicker.setPower(-motorPower);
+                // flicker.setPower(-motorPower);
                 transportServoRightBottom.setPower(-motorPower);
                 transWheel.setPower(-motorPower);
                 break;
