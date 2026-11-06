@@ -20,7 +20,7 @@ public class TeleOpMain extends CyberKnightsOpMode {
     // This function is executed when this Op Mode is selected from the Driver Station
     @Override
     public void runOpMode() {
-        // Create the utils classes
+        // initalize the utils classes
         initialize();
 
         // Wait for the game to start (driver presses PLAY)
@@ -34,6 +34,7 @@ public class TeleOpMain extends CyberKnightsOpMode {
             telemetry.addData("Status", "opModeIsActive");
             telemetry.addLine();
             telemetry.addData("Flywheel RPM: ", shooter.getFlyWheelSpeed(motors.flywheel));
+            telemetry.addData("yaw", motors.launchYaw.getCurrentPosition());
             telemetry.update();
 
             //Add option to enable brakes when sharbell holds a
@@ -58,7 +59,7 @@ public class TeleOpMain extends CyberKnightsOpMode {
 
             //shooter.setVelocity(motors.flywheel, gamepad1.right_bumper);
 
-            sleep(100);
+            //sleep(100);
         }
         // Do not place any drive code here outside the while loop (will fail inspection)
     }

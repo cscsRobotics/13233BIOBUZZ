@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class ShooterControls {
     int yawTargetPos;
-    int yawMin; // modify value
-    int yawMax; // modify value
+    int yawMin = 0;
+    int yawMax = 296;
 
     private void initSetToPositionMotor(DcMotor motor) {
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -25,7 +25,7 @@ public class ShooterControls {
     }
 
     public int getMoveAmount(float controllerInput) {
-        return (int) (controllerInput * 100) / 10; // cast the input from a controller to an int
+        return (int) (controllerInput * 100) / 25; // cast the input from a controller to an int
     }
 
     public double getFlyWheelSpeed(DcMotorEx flywheel) {

@@ -30,6 +30,7 @@ public class MotorConstructor {
     //Shooter
     public DcMotorEx flywheel;
     public Servo hood;
+
     public DcMotor launchYaw; // yaw is rotation left to right
     //transport motors
     public DcMotor transWheel;
