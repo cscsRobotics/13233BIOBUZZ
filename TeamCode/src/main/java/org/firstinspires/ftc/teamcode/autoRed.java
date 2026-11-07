@@ -12,14 +12,14 @@ public class autoRed extends CyberKnightsOpMode {
         waitForStart();
         if (opModeIsActive()) {
             // forward/back = 0, strafe = STRAFE_POWER, turn = 0, brake trigger = 0
-            drive.setPower(1.0f, 0.0f, 0.0f, 0.0f);//drive forward
-            sleep(500);
+            drive.setPower(-1.0f, 0.0f, 0.0f, 0.0f);//drive forward
+            sleep(250);
             drive.setPower(0.0f,0.0f,0.0f,0.0f);//stops
-            drive.setPower(0.0f, -1.0f, 0.0f, 0.0f);//strafes to parking zone
-            sleep(1000);
+            drive.setPower(0.0f, 1.0f, 0.0f, 0.0f);//strafes to parking zone
+            sleep(250);
             drive.setPower(0.0f,0.0f,0.0f,0.0f);//stops
-            drive.setPower(-1.0f, 0.0f, 0.0f, 0.0f);//drive backward
-            sleep(500);
+            drive.setPower(1.0f, 0.0f, 0.0f, 0.0f);//drive backward
+            sleep(250);
             drive.setPower(0.0f,0.0f,0.0f,0.0f);//stops
         }
     }
