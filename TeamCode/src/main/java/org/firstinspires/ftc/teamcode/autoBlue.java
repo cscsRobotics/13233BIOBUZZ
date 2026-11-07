@@ -7,10 +7,11 @@ import org.firstinspires.ftc.teamcode.Utils_13233.CyberKnightsOpMode;
 public class autoBlue extends CyberKnightsOpMode {
     @Override
     public void runOpMode() {
+        initialize();
 
         waitForStart();
         if (opModeIsActive()) {
-            // forward/back = 0, strafe = STRAFE_POWER, turn = 0, brake trigger = 0
+
             drive.setPower(1.0f, 0.0f, 0.0f, 0.0f);//drive foward
             sleep(500);
             drive.setPower(0.0f,0.0f,0.0f,0.0f);//stops
