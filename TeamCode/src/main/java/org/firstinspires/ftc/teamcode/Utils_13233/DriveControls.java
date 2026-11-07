@@ -110,7 +110,7 @@ public class DriveControls {
 
     /**
      * Function that allows for the driver to control the zero power behavior of the drive motors
-     * to either BRAKE or FLOAT float is the default if no input is given on the controller
+     * to either BRAKE or FLOAT, float is the default if no input is given on the controller
      *
      * @param input Controller button input to determine if the motors should be in BRAKE or FLOAT
      */

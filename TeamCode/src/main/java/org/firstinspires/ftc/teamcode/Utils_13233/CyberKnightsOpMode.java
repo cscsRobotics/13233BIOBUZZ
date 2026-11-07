@@ -24,6 +24,16 @@ public abstract class CyberKnightsOpMode extends LinearOpMode {
         transport.servoInit(motors.bottomTransportServo, motors.leftBottom, motors.flicker, motors.rightBottom);
         transport.motorInit(motors.transWheel);
         shooter.initAllMotors(motors.launchYaw, motors.flywheel);
+        shooter.initServos(motors.hood);
         intake.motorInit(motors.intake);
+    }
+
+    public boolean triggerToBoolean(float trigger) {
+        return trigger > 0.1;
+    }
+
+    public void runTransportAndShooter(boolean input) {
+        shooter.setVelocity(motors.flywheel, input);
+        transport.run(false, input);
     }
 }

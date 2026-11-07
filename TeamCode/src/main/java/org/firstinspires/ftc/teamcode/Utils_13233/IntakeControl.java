@@ -44,9 +44,9 @@ public class IntakeControl {
         lastReverseButton = reverseButton;
 
         if (forwardOn) {
-            intake.setPower(1);
+            intake.setPower(1.0);
         } else if (reverseOn) {
-            intake.setPower(-1);
+            intake.setPower(-1.0);
         } else {
             intake.setPower(0);
         }
