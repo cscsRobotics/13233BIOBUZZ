@@ -47,19 +47,17 @@ public class TeleOpMain extends CyberKnightsOpMode {
 
 
             // runs the intake based on these settings
-            intake.toggle(gamepad1.a, gamepad1.x);
+            intake.toggle(gamepad2.a, gamepad2.x);
 
-            transport.run(gamepad1.dpad_down, gamepad1.dpad_up);// runs transport servos/motor, hopefully fixed issue with dpadup
+            transport.run(gamepad2.dpad_down, gamepad1.dpad_up);
             // Hold X to run the flicker forward, hold Y to run it in reverse
-            transport.setFlicker(gamepad1.left_bumper); // this needs to be updated with the code sharbell wrote
+            transport.setFlicker(triggerToBoolean(gamepad2.left_trigger));
 
             // Shooter
-            shooter.adjustYaw(shooter.getMoveAmount(gamepad2.left_stick_x), motors.launchYaw);// inop, need this working for saturday
-            shooter.setVelocity(motors.flywheel, gamepad1.right_bumper);
+            shooter.adjustYaw(shooter.getMoveAmount(gamepad2.left_stick_x), motors.launchYaw);
+            shooter.setVelocity(motors.flywheel, gamepad2.right_bumper);
 
-            //shooter.setVelocity(motors.flywheel, gamepad1.right_bumper);
-
-            //sleep(100);
+            runTransportAndShooter(gamepad2.left_bumper);
         }
         // Do not place any drive code here outside the while loop (will fail inspection)
     }

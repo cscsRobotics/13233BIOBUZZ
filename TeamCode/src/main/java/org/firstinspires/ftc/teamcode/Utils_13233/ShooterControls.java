@@ -3,11 +3,23 @@ package org.firstinspires.ftc.teamcode.Utils_13233;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class ShooterControls {
     int yawTargetPos;
     int yawMin = 0;
     int yawMax = 296;
+
+    Servo hood;
+
+    /**
+     *
+     * @param degrees value in degrees for the servo position
+     * @return converted value of the degrees to setPosition() value for the servo
+     */
+    private static double degTo300DegServoPos(double degrees) {
+        return degrees / 300;
+    }
 
     private void initSetToPositionMotor(DcMotor motor) {
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -24,8 +36,12 @@ public class ShooterControls {
         //flywheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
+    public void initServos(Servo hoodInput) {
+        hood = hoodInput;
+    }
+
     public int getMoveAmount(float controllerInput) {
-        return (int) (controllerInput * 100) / 25; // cast the input from a controller to an int
+        return (int) (controllerInput * 100) / 10; // cast the input from a controller to an int
     }
 
     public double getFlyWheelSpeed(DcMotorEx flywheel) {
@@ -69,5 +85,9 @@ public class ShooterControls {
         else if (yawTargetPos < yawMin) yawTargetPos = yawMax;
 
         motor.setTargetPosition(yawTargetPos);
+    }
+
+    public void moveHood(double degrees) {
+        hood.setPosition(degTo300DegServoPos(degrees));
     }
 }
