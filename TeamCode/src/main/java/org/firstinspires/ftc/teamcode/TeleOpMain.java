@@ -20,7 +20,7 @@ public class TeleOpMain extends CyberKnightsOpMode {
     // This function is executed when this Op Mode is selected from the Driver Station
     @Override
     public void runOpMode() {
-        // initalize the utils classes
+        // initialize the utils classes
         initialize();
 
         // Wait for the game to start (driver presses PLAY)
@@ -49,15 +49,18 @@ public class TeleOpMain extends CyberKnightsOpMode {
             // runs the intake based on these settings
             intake.toggle(gamepad2.a, gamepad2.x);
 
-            transport.run(gamepad2.dpad_down, gamepad1.dpad_up);
+            //transport.run(gamepad2.dpad_down, gamepad1.dpad_up);
+            transport.run(false, gamepad2.dpad_down);
+
             // Hold X to run the flicker forward, hold Y to run it in reverse
-            transport.setFlicker(triggerToBoolean(gamepad2.left_trigger));
+            transport.setFlicker(gamepad2.y);
 
             // Shooter
             shooter.adjustYaw(shooter.getMoveAmount(gamepad2.left_stick_x), motors.launchYaw);
             shooter.setVelocity(motors.flywheel, gamepad2.right_bumper);
 
-            runTransportAndShooter(gamepad2.left_bumper);
+            //runTransportAndShooter(gamepad2.left_bumper);
+            sleep(100);
         }
         // Do not place any drive code here outside the while loop (will fail inspection)
     }

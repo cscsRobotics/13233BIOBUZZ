@@ -28,10 +28,12 @@ public abstract class CyberKnightsOpMode extends LinearOpMode {
         intake.motorInit(motors.intake);
     }
 
+    @SuppressWarnings("unused")
     public boolean triggerToBoolean(float trigger) {
         return trigger > 0.1;
     }
 
+    @SuppressWarnings("unused")
     public void runTransportAndShooter(boolean input) {
         shooter.setVelocity(motors.flywheel, input);
         transport.run(false, input);
