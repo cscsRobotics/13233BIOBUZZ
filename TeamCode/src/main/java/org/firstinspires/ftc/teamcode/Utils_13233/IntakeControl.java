@@ -2,10 +2,11 @@ package org.firstinspires.ftc.teamcode.Utils_13233;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class IntakeControl {
     DcMotor intake;
-
+    Servo dozer;
     //toggle states
     private boolean forwardOn = false;
     private boolean reverseOn = false;
@@ -30,7 +31,7 @@ public class IntakeControl {
         if (forwardButton && !lastForwardButton) {
             forwardOn = !forwardOn;
             if (forwardOn) {
-                reverseOn = false;   // can't run both directions at once
+                reverseOn = false;
             }
         }
         if (reverseButton && !lastReverseButton) {
@@ -51,4 +52,15 @@ public class IntakeControl {
             intake.setPower(0);
         }
     }
+    public void servoInit(Servo inputDozer) {
+        dozer = inputDozer;
+    }
+    public void setDozer(boolean isDozing) {//old flicker code
+        double servoPos = isDozing ? 0.8 : 0.0;//PLACEHOLDERVALUES
+        dozer.setPosition(servoPos);
+    }
+   // public void servoInit(Servo Dozerinput) {
+   //     dozer = Dozerinput;
+   //     dozer.setPosition(0.0);//default is up position (again, a guess on value fix later)
+   // }
 }

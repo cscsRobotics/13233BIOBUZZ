@@ -36,7 +36,7 @@ public class MotorConstructor {
     public DcMotor transWheel;
 
     //Transport Servos
-    public Servo flicker;
+    public Servo dozer;
     public CRServo bottomTransportServo;
     public CRServo leftBottom;
     public CRServo rightBottom;
@@ -65,13 +65,14 @@ public class MotorConstructor {
         hood = hardwareMap.get(Servo.class, "hood");
 
 
-        // Transport Servos should all be CR servos in order to let(BESIDES FLICKER)
-        flicker = hardwareMap.get(Servo.class, "flicker");
+        // Transport Servos should all be CR servos in order to let(BESIDES dozer)
+        dozer = hardwareMap.get(Servo.class, "dozer");
         bottomTransportServo = hardwareMap.get(CRServo.class, "bottomTransportServo");
         rightBottom = hardwareMap.get(CRServo.class, "rightBottom");
         leftBottom = hardwareMap.get(CRServo.class, "leftBottom");
+        //all transport servos obsolete. remove when its not a risk that ill destroy the code
 
-        flicker.setDirection(Servo.Direction.REVERSE);
+        dozer.setDirection(Servo.Direction.REVERSE);//change name from flicker to dozer--flicker servo changed to dozer
         rightBottom.setDirection(CRServo.Direction.REVERSE);
 
 

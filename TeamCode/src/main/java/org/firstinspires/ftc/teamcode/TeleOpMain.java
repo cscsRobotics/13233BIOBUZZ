@@ -37,13 +37,13 @@ public class TeleOpMain extends CyberKnightsOpMode {
             telemetry.addData("yaw", motors.launchYaw.getCurrentPosition());
             telemetry.update();
 
-            //Add option to enable brakes when sharbell holds a
-            drive.setDriveMotorZeroPowerBehavior(gamepad1.b);
+            //Add option to enable brakes when driver1 holds b
+            drive.setDriveMotorZeroPowerBehavior(gamepad1.right_bumper);
 
 
             // Sets the power to the drive motors based on current gamepad inputs
             drive.setPower(gamepad1.left_stick_y, gamepad1.left_stick_x,
-                    gamepad1.right_stick_x, gamepad1.left_trigger);
+                    gamepad1.right_stick_x, gamepad1.left_trigger);//drive code
 
 
             // runs the intake based on these settings
@@ -53,7 +53,7 @@ public class TeleOpMain extends CyberKnightsOpMode {
             transport.run(false, gamepad2.dpad_down);
 
             // Hold X to run the flicker forward, hold Y to run it in reverse
-            transport.setFlicker(gamepad2.y);
+            intake.setDozer(gamepad1.left_bumper);
 
             // Shooter
             shooter.adjustYaw(shooter.getMoveAmount(gamepad2.left_stick_x), motors.launchYaw);

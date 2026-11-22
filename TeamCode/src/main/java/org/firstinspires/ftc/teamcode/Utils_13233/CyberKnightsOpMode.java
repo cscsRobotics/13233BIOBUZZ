@@ -21,11 +21,13 @@ public abstract class CyberKnightsOpMode extends LinearOpMode {
         shooter = new ShooterControls();
         transport = new TransportControls();
 
-        transport.servoInit(motors.bottomTransportServo, motors.leftBottom, motors.flicker, motors.rightBottom);
+        transport.servoInit(motors.bottomTransportServo, motors.leftBottom, motors.rightBottom);
         transport.motorInit(motors.transWheel);
         shooter.initAllMotors(motors.launchYaw, motors.flywheel);
         shooter.initServos(motors.hood);
         intake.motorInit(motors.intake);
+        intake.servoInit(motors.dozer);
+
     }
 
     @SuppressWarnings("unused")
