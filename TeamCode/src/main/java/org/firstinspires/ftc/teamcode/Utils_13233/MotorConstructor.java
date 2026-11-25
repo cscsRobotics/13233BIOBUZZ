@@ -43,10 +43,10 @@ public class MotorConstructor {
 
     public MotorConstructor(HardwareMap hardwareMap) {
         // Map main Drive Motors
-        leftFront = hardwareMap.get(DcMotor.class, "leftFront");
-        rightFront = hardwareMap.get(DcMotor.class, "rightFront");
-        leftBack = hardwareMap.get(DcMotor.class, "leftBack");
-        rightBack = hardwareMap.get(DcMotor.class, "rightBack");
+        leftFront = hardwareMap.get(DcMotor.class, "lf");
+        rightFront = hardwareMap.get(DcMotor.class, "rf");
+        leftBack = hardwareMap.get(DcMotor.class, "lr");
+        rightBack = hardwareMap.get(DcMotor.class, "rr");
 
         // Set direction of the main drive motors
         leftFront.setDirection(DcMotorSimple.Direction.FORWARD);

@@ -37,7 +37,7 @@ public class TeleOpMain extends CyberKnightsOpMode {
             telemetry.addData("yaw", motors.launchYaw.getCurrentPosition());
             telemetry.update();
 
-            //Add option to enable brakes when driver1 holds b
+            //Add option to enable brakes when driver1 holds R bumper
             drive.setDriveMotorZeroPowerBehavior(gamepad1.right_bumper);
 
 
@@ -49,8 +49,8 @@ public class TeleOpMain extends CyberKnightsOpMode {
             // runs the intake based on these settings
             intake.toggle(gamepad2.a, gamepad2.x);
 
-            //transport.run(gamepad2.dpad_down, gamepad1.dpad_up);
-            transport.run(false, gamepad2.dpad_down);
+            transport.run(gamepad2.dpad_down, gamepad2.dpad_up);
+            //transport.run(false, gamepad2.dpad_down);
 
             // Hold X to run the flicker forward, hold Y to run it in reverse
             intake.setDozer(gamepad1.left_bumper);
